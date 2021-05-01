@@ -8,6 +8,8 @@ module.exports = {
       ...theme("colors"),
       primary: "#111111",
       secondary: "#000000",
+      button: "#2D2D2D",
+      orange: "#FF6400",
     }),
 
     borderColor: (theme) => ({
@@ -24,10 +26,16 @@ module.exports = {
       fontFamily: {
         roboto: ['"Roboto"', "ui-serif", "Georgia"],
       },
+      outline: {
+        orange: "1px solid #FF6400",
+        gray: "1px solid #4A4A4A",
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      outline: ["hover"],
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

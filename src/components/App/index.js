@@ -9,7 +9,7 @@ function App() {
     <div className="overflow-x-hidden">
       <Navbar />
 
-      <div className="w-screen h-screen bg-primary">
+      <div className="py-20">
         <Switch>
           {routes.map(({ path, component: Component, ...rest }) => (
             <Route path={path} component={Component} key={path} {...rest} />

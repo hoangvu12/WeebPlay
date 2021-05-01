@@ -43,14 +43,14 @@ const Navbar = () => {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
-        <div className={classNames("fixed w-screen h-14")}>
+        <div className={classNames("fixed w-screen h-14 z-10")}>
           <div className="relative w-full h-full flex items-center bg-secondary z-10 top-0">
             <div className="low:hidden lg:absolute lg:flex lg:transform lg:left-1/2 lg:-translate-x-2/4">
               {renderRoutes}
             </div>
 
             <Center>
-              <Disclosure.Button className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+              <Disclosure.Button className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none">
                 <span className="sr-only">Open main menu</span>
                 {open ? (
                   <XIcon className="block h-6 w-6" aria-hidden="true" />

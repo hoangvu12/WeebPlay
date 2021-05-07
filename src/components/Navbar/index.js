@@ -4,7 +4,7 @@ import { SearchIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, useLocation } from "react-router-dom";
 
 import routes from "../../routes";
-import logo from "../../images/logo.png";
+import logo from "../../assets/logo.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -15,28 +15,30 @@ const Navbar = () => {
 
   const renderRoutes = useMemo(
     () =>
-      routes.map((route, i) => {
-        const isActive = location.pathname === route.path;
-        return (
-          <div
-            key={i}
-            className={classNames(
-              "h-14 flex items-center",
-              isActive && "border-b-2 border-orange"
-            )}
-          >
-            <Link
-              to={route.path}
+      routes
+        .filter((route) => route.navbar)
+        .map((route, i) => {
+          const isActive = location.pathname === route.path;
+          return (
+            <div
+              key={i}
               className={classNames(
-                "px-4 font-roboto hover:text-orange",
-                isActive ? "text-white text-lg" : "text-gray-400"
+                "h-14 flex items-center",
+                isActive && "border-b-2 border-orange"
               )}
             >
-              {route.navbarTitle}
-            </Link>
-          </div>
-        );
-      }),
+              <Link
+                to={route.path}
+                className={classNames(
+                  "px-4 font-roboto hover:text-orange transition duration-300",
+                  isActive ? "text-white text-lg" : "text-gray-400"
+                )}
+              >
+                {route.navbarTitle}
+              </Link>
+            </div>
+          );
+        }),
     [location.pathname]
   );
 
@@ -66,7 +68,7 @@ const Navbar = () => {
 
             <Right>
               <Link to="/search">
-                <SearchIcon className="h-5 w-10 text-white hover:text-orange" />
+                <SearchIcon className="h-5 w-10 text-white hover:text-orange transition duration-300" />
               </Link>
             </Right>
 

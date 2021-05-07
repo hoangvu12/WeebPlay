@@ -10,6 +10,7 @@ const Thumbnail = (props) => {
         alt="card-thumbnail"
         className={classNames("rounded-md", props.className)}
       />
+      {props.children}
     </div>
   );
 };

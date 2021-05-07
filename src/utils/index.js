@@ -10,3 +10,7 @@ export const isEmpty = (data) => {
 
   return JSON.stringify(data) === "{}";
 };
+
+export function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

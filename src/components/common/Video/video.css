@@ -1,0 +1,18 @@
+.vjs-control-bar {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  align-items: center;
+}
+
+.vjs-volume-level {
+  background-color: #ff6400 !important;
+  color: #ff6400 !important;
+}
+
+.vjs-play-progress {
+  background-color: #ff6400 !important;
+  color: #ff6400 !important;
+}
+
+.ytp-pause-overlay {
+  display: none !important;
+}

@@ -30,6 +30,9 @@ module.exports = {
         orange: "1px solid #FF6400",
         gray: "1px solid #4A4A4A",
       },
+      transitionDuration: {
+        2000: "2000ms",
+      },
     },
   },
   variants: {

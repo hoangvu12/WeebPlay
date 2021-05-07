@@ -1,5 +1,5 @@
 import HomePage from "./pages/HomePage";
-import Anime from "./pages/Anime";
+import Playlist from "./pages/Playlist";
 import Watch from "./pages/Watch";
 
 const defaultRouters = [
@@ -11,15 +11,14 @@ const defaultRouters = [
     exact: true,
   },
   {
-    navbarTitle: "Anime",
-    navbar: true,
-    path: "/anime",
-    component: Anime,
+    navbar: false,
+    path: "/playlist",
+    component: Playlist,
     exact: false,
   },
   {
     navbar: false,
-    path: "/watch/:slug",
+    path: "/watch",
     component: Watch,
     exact: false,
   },

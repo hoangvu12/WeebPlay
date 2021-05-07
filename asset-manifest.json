@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/weebplay/static/css/main.f7654339.chunk.css",
+    "main.js": "/weebplay/static/js/main.e929d718.chunk.js",
+    "main.js.map": "/weebplay/static/js/main.e929d718.chunk.js.map",
+    "runtime-main.js": "/weebplay/static/js/runtime-main.245aa61e.js",
+    "runtime-main.js.map": "/weebplay/static/js/runtime-main.245aa61e.js.map",
+    "static/css/2.95b7e0e5.chunk.css": "/weebplay/static/css/2.95b7e0e5.chunk.css",
+    "static/js/2.899f9ffb.chunk.js": "/weebplay/static/js/2.899f9ffb.chunk.js",
+    "static/js/2.899f9ffb.chunk.js.map": "/weebplay/static/js/2.899f9ffb.chunk.js.map",
+    "index.html": "/weebplay/index.html",
+    "static/css/2.95b7e0e5.chunk.css.map": "/weebplay/static/css/2.95b7e0e5.chunk.css.map",
+    "static/css/main.f7654339.chunk.css.map": "/weebplay/static/css/main.f7654339.chunk.css.map",
+    "static/js/2.899f9ffb.chunk.js.LICENSE.txt": "/weebplay/static/js/2.899f9ffb.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/weebplay/static/media/revicons.e8746a62.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.245aa61e.js",
+    "static/css/2.95b7e0e5.chunk.css",
+    "static/js/2.899f9ffb.chunk.js",
+    "static/css/main.f7654339.chunk.css",
+    "static/js/main.e929d718.chunk.js"
+  ]
+}

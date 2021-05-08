@@ -48,11 +48,11 @@ const Watch = () => {
   const query = useQuery();
   const history = useHistory();
 
-  // const videoId = query.get("videoId");
-  // const playlistId = query.get("playlistId");
+  const videoId = query.get("videoId");
+  const playlistId = query.get("playlistId");
 
-  const [videoId] = useState(() => query.get("videoId"));
-  const [playlistId, setPlaylistId] = useState(() => query.get("playlistId"));
+  // const [videoId] = useState(() => query.get("videoId"));
+  // const [playlistId, setPlaylistId] = useState(() => query.get("playlistId"));
 
   const [isLoading, setIsLoading] = useState(true);
   const [isShow, setIsShow] = useState(false);
@@ -78,6 +78,8 @@ const Watch = () => {
 
       const urls = data.match(regex);
 
+      // get playlist id
+      // https://www.youtube.com/playlist?list=PLdM751AKK4aPckmOpLcVmyMJ-KGQ7_3tW
       return urls
         .find((url) => url.includes("youtube.com/playlist"))
         .split("=")[1];
@@ -92,7 +94,9 @@ const Watch = () => {
       if (!playlistId) {
         const parsedPlaylistId = parsePlaylistId(info.description);
 
-        setPlaylistId(parsedPlaylistId);
+        history.replace(
+          `/watch?videoId=${videoId}&playlistId=${parsedPlaylistId}`
+        );
 
         return;
       }

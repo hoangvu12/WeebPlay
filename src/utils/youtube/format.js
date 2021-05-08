@@ -37,6 +37,21 @@ export default class Format {
     return parseData(data.items, properties)[0];
   }
 
+  static videos(data) {
+    let properties = [
+      { id: "videoId" },
+      "snippet.publishedAt",
+      "snippet.title",
+      "snippet.description",
+      "snippet.thumbnails",
+      "snippet.channelTitle",
+    ];
+
+    return {
+      items: parseData(data.items, properties),
+    };
+  }
+
   static search(data) {
     const { nextPageToken, items, pageInfo, regionCode } = data;
 
@@ -95,15 +110,29 @@ function parseData(data, properties = []) {
     const returnData = {};
 
     for (let property of properties) {
-      const split = property.split(".");
-      const key = split[split.length - 1];
+      let key, assignKey, evalKey;
+
+      if (typeof property === "object") {
+        const [propertyKey, propertyValue] = Object.entries(property)[0];
+
+        key = propertyKey;
+        assignKey = propertyValue;
+
+        evalKey = key;
+      } else {
+        const split = property.split(".");
+
+        key = split[split.length - 1];
+        assignKey = key;
+        evalKey = property;
+      }
 
       // eslint-disable-next-line no-eval
-      const value = eval(`item.${property}`);
+      const value = eval(`item.${evalKey}`);
 
       if (typeof value === undefined || value === null) continue;
 
-      returnData[key] = value;
+      returnData[assignKey] = value;
     }
 
     return returnData;

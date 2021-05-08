@@ -36,9 +36,21 @@ function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [sections, setSections] = useState([]);
-  const [videos, setVideos] = useState([]);
+  const [latestVideos, setLatestVideos] = useState([]);
+  const [watchedVideos, setWatchedVideos] = useState([]);
 
   useEffect(() => {
+    const getWatchedVideos = async () => {
+      const videoIds = Object.keys(localStorage);
+
+      const videos = await yt.videos(videoIds, {
+        filter: ({ snippet }) => snippet.liveBroadcastContent === "none",
+        maxResults: 24,
+      });
+
+      return videos;
+    };
+
     const getLatestVideos = async () => {
       const videos = await yt.latestVideos(channelId, {
         type: "video",
@@ -60,13 +72,15 @@ function HomePage() {
     };
 
     const getData = async () => {
-      const [sections, videos] = await Promise.all([
+      const [sections, latestVideos, watchedVideos] = await Promise.all([
         getSections(),
         getLatestVideos(),
+        getWatchedVideos(),
       ]);
 
       setSections(sections);
-      setVideos(videos);
+      setLatestVideos(latestVideos);
+      setWatchedVideos(watchedVideos);
 
       setIsLoading(false);
     };
@@ -102,7 +116,7 @@ function HomePage() {
             )}
           </Card.Thumbnail>
           <Card.Description className="group min-h-14">
-            <p className="text-white font-roboto group-hover:text-orange line-clamp-1 break-all transition-all duration-300">
+            <p className="text-white font-roboto group-hover:text-orange line-clamp-2 break-all transition-all duration-300">
               {anime.title}
             </p>
           </Card.Description>
@@ -120,8 +134,16 @@ function HomePage() {
           <>
             <Carousel
               className="mb-5"
+              heading="📅 Xem gần đây"
+              data={watchedVideos.items}
+              renderItem={renderItem}
+              responsive={responsive}
+              itemClass="flex justify-center w-max"
+            />
+            <Carousel
+              className="mb-5"
               heading="🆕 Đăng tải gần đây"
-              data={videos.items}
+              data={latestVideos.items}
               renderItem={renderItem}
               responsive={responsive}
               itemClass="flex justify-center w-max"

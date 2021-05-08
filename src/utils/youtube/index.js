@@ -1,3 +1,4 @@
+import { IdentificationIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import Format, { objMerge } from "./format";
 
@@ -47,6 +48,35 @@ export default class API {
     let { data } = await axios(axiosOpts);
 
     return Format.video(data);
+  }
+
+  async videos(id, options = {}) {
+    const { filter, ...rest } = options;
+
+    let params = objMerge(
+      this.params,
+      {
+        id: Array.isArray(id) ? id.slice(0, 24).join(",") : id,
+        part: "snippet",
+        regionCode: "VN",
+        ...rest,
+      },
+      { clean: true }
+    );
+
+    const axiosOpts = {
+      url: `${API_URL_BASE}/videos`,
+      method: "get",
+      params,
+    };
+
+    let { data } = await axios(axiosOpts);
+
+    if (filter) {
+      data.items = data.items.filter(filter);
+    }
+
+    return Format.videos(data);
   }
 
   async latestVideos(channelId, options = {}) {

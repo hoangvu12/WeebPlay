@@ -110,6 +110,14 @@ const Watch = () => {
 
     const player = videojs(videoEl.current);
 
+    // const updateVideoTime = () => {
+    //   if (!localStorage[videoId]) return;
+
+    //   const savedInfo = JSON.parse(localStorage[videoId]);
+
+    //   player.currentTime(savedInfo.time);
+    // };
+
     player.maxQualitySelector({
       defaultQuality: 2,
     });
@@ -119,7 +127,22 @@ const Watch = () => {
       src: `https://www.youtube.com/watch?v=${videoId}`,
     });
 
+    const savedInfo = JSON.parse(localStorage[videoId] || "{}");
+
+    player.currentTime(savedInfo.time);
+
+    player.on("timeupdate", () => {
+      const currentPlayTime = player.currentTime();
+
+      localStorage[videoId] = JSON.stringify({ time: currentPlayTime });
+    });
+
     getData();
+    // updateVideoTime();
+
+    return () => {
+      player && player.off("timeupdate");
+    };
   }, [videoId, playlistId]);
 
   return (

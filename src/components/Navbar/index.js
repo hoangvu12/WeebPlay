@@ -30,10 +30,11 @@ const Navbar = () => {
               <Link
                 to={route.path}
                 className={classNames(
-                  "px-4 font-roboto hover:text-orange transition duration-300",
+                  "flex flex-1 items-center px-4 font-roboto hover:text-orange transition duration-300",
                   isActive ? "text-white text-lg" : "text-gray-400"
                 )}
               >
+                {route.icon && <route.icon className="w-6 h-6 mr-2 block" />}
                 {route.navbarTitle}
               </Link>
             </div>
@@ -84,6 +85,11 @@ const Navbar = () => {
                 leaveTo="-translate-x-full"
               >
                 <div className="w-60 h-screen absolute bg-secondary top-7">
+                  <div className="w-full border-b border-gray-500 pb-3 mb-2">
+                    <div className="w-5/6 mx-auto">
+                      <img src={logo} alt="icon" className="p-2" />
+                    </div>
+                  </div>
                   {renderRoutes}
                 </div>
               </Transition>
@@ -109,7 +115,7 @@ function Right(props) {
 
 function Left(props) {
   return (
-    <div className="absolute lg:left-5 low:left-1/2 lg:transform-none low:transform low:-translate-x-1/2">
+    <div className="absolute lg:left-3 low:left-1/2 lg:transform-none low:transform low:-translate-x-1/2">
       {props.children}
     </div>
   );
@@ -118,7 +124,7 @@ function Left(props) {
 function Brand(props) {
   return (
     <Link to="/">
-      <img alt="logo" src={props.src} />
+      <img alt="logo" src={props.src} className="w-40" />
     </Link>
   );
 }

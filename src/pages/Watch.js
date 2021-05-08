@@ -87,7 +87,7 @@ const Watch = () => {
 
     const getData = async () => {
       const [info, items] = await Promise.all([
-        isEmpty(videoInfo) && getVideoInfo(),
+        getVideoInfo(),
         playlistId && getPlaylistItems(),
       ]);
 
@@ -101,8 +101,8 @@ const Watch = () => {
         return;
       }
 
-      isEmpty(videoInfo) && setVideoInfo(info);
-      playlistId && setPlaylistItems(items);
+      setVideoInfo(info);
+      setPlaylistItems(items);
 
       setIsLoading(false);
       setIsShow(true);

@@ -81,7 +81,7 @@ const Playlist = () => {
             </div>
           </div>
           <div className="py-3 flex flex-col items-center">
-            <div className="w-3/6">
+            <div className="lg:w-3/6 md:w-4/6">
               {playlistItems.map((item, index) => {
                 return <Item {...item} key={index} />;
               })}

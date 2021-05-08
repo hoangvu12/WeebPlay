@@ -124,7 +124,7 @@ function Left(props) {
 function Brand(props) {
   return (
     <Link to="/">
-      <img alt="logo" src={props.src} className="w-40" />
+      <img alt="logo" src={props.src} className="w-36" />
     </Link>
   );
 }

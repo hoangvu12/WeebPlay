@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/common/Card";
 import Carousel from "../components/HomePage/Carousel";
+import { isEmpty } from "../utils";
 import YouTubeAPI from "../utils/youtube";
 
 const yt = new YouTubeAPI();
@@ -42,6 +43,8 @@ function HomePage() {
   useEffect(() => {
     const getWatchedVideos = async () => {
       const videoIds = Object.keys(localStorage);
+
+      if (isEmpty(videoIds)) return [];
 
       const videos = await yt.videos(videoIds, {
         filter: ({ snippet }) => snippet.liveBroadcastContent === "none",
@@ -132,14 +135,16 @@ function HomePage() {
         {isLoading && <Loader number={3} />}
         {!isLoading && (
           <>
-            <Carousel
-              className="mb-5"
-              heading="📅 Xem gần đây"
-              data={watchedVideos.items}
-              renderItem={renderItem}
-              responsive={responsive}
-              itemClass="flex justify-center w-max"
-            />
+            {!isEmpty(watchedVideos) && (
+              <Carousel
+                className="mb-5"
+                heading="📅 Xem gần đây"
+                data={watchedVideos.items}
+                renderItem={renderItem}
+                responsive={responsive}
+                itemClass="flex justify-center w-max"
+              />
+            )}
             <Carousel
               className="mb-5"
               heading="🆕 Đăng tải gần đây"

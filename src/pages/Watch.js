@@ -1,5 +1,6 @@
 import { Transition } from "@headlessui/react";
 import { ThumbDownIcon, ThumbUpIcon } from "@heroicons/react/solid";
+import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import Linkify from "react-linkify";
 import { useHistory } from "react-router";
@@ -86,10 +87,14 @@ const Watch = () => {
     };
 
     const getData = async () => {
-      const [info, items] = await Promise.all([
+      const promises = await Promise.allSettled([
         getVideoInfo(),
         playlistId && getPlaylistItems(),
       ]);
+
+      const [info, items] = promises.map(
+        (promise) => promise.status === "fulfilled" && promise.value
+      );
 
       if (!playlistId) {
         const parsedPlaylistId = parsePlaylistId(info.description);
@@ -101,8 +106,8 @@ const Watch = () => {
         return;
       }
 
-      setVideoInfo(info);
-      setPlaylistItems(items);
+      !isEmpty(info) && setVideoInfo(info);
+      !!items && setPlaylistItems(items);
 
       setIsLoading(false);
       setIsShow(true);
@@ -161,8 +166,13 @@ const Watch = () => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-2 mt-2">
-            <div className="md:col-span-3 mb-5 border-r px-2 border-gray-200 border-opacity-20">
+          <div
+            className={classNames(
+              "grid grid-cols-1 gap-2 mt-2",
+              !isEmpty(playlistItems) ? "md:grid-cols-5" : "md:grid-cols-1"
+            )}
+          >
+            <div className="md:col-span-3 mb-5 border-r px-2 md:border-gray-200 md:border-opacity-20">
               <div className="flex justify-between items-center w-full">
                 <p className="text-white text-lg font-medium">
                   {videoInfo.title}

@@ -44,6 +44,7 @@ function HomePage() {
         type: "video",
         maxResults: 24,
         regionCode: "VN",
+        filter: ({ snippet }) => snippet.liveBroadcastContent === "none",
       });
 
       return videos;

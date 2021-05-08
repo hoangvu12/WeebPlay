@@ -50,13 +50,15 @@ export default class API {
   }
 
   async latestVideos(channelId, options = {}) {
+    const { filter, ...rest } = options;
+
     let params = objMerge(
       this.params,
       {
         channelId,
         part: "snippet",
         order: "date",
-        ...options,
+        ...rest,
       },
       { clean: true }
     );
@@ -69,8 +71,8 @@ export default class API {
 
     let { data } = await axios(axiosOpts);
 
-    if (options.filter) {
-      data.items = data.items.filter(options.filter);
+    if (filter) {
+      data.items = data.items.filter(filter);
     }
 
     return Format.search(data);

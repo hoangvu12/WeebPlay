@@ -24,7 +24,6 @@ const options = {
       rel: 0,
       iv_load_policy: 3,
       autoplay: 1,
-      vq: "hd720",
     },
   },
   controlBar: {
@@ -41,6 +40,39 @@ const options = {
   },
   fluid: true,
   techOrder: ["html5", "youtube"],
+};
+
+const overlayOptions = {
+  previous: {
+    handleClick: (player) => {},
+  },
+  seekLeft: {
+    handleClick: (player) => {
+      const time = Number(player.currentTime()) - 10;
+
+      player.currentTime(time);
+    },
+  },
+  play: {
+    handleClick: (player) => {
+      if (player.paused()) {
+        player.play();
+      } else {
+        player.pause();
+      }
+    },
+  },
+  seekRight: {
+    handleClick: (player) => {
+      const time = Number(player.currentTime()) + 10;
+
+      player.currentTime(time);
+    },
+  },
+  next: {
+    handleClick: (player) => {},
+  },
+  lockButton: true,
 };
 
 const Watch = () => {
@@ -74,7 +106,7 @@ const Watch = () => {
     };
 
     const parsePlaylistId = (data) => {
-      const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+      const expression = /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi;
       const regex = new RegExp(expression);
 
       const urls = data.match(regex);
@@ -115,14 +147,6 @@ const Watch = () => {
 
     const player = videojs(videoEl.current);
 
-    // const updateVideoTime = () => {
-    //   if (!localStorage[videoId]) return;
-
-    //   const savedInfo = JSON.parse(localStorage[videoId]);
-
-    //   player.currentTime(savedInfo.time);
-    // };
-
     player.maxQualitySelector({
       defaultQuality: 2,
     });
@@ -148,12 +172,13 @@ const Watch = () => {
     return () => {
       player && player.off("timeupdate");
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId, playlistId]);
 
   return (
     <div className="w-11/12 mx-auto py-14">
       <div className="lg:w-4/6 mx-auto mb-5 md:w-5/6">
-        <Video ref={videoEl} {...options} videoId={videoId} />
+        <Video ref={videoEl} {...options} overlayOptions={overlayOptions} />
       </div>
 
       {!isLoading && (

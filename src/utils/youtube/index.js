@@ -1,4 +1,3 @@
-import { IdentificationIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import Format, { objMerge } from "./format";
 

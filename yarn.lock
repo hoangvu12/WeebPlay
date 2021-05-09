@@ -11772,7 +11772,7 @@
     "core-util-is" "1.0.2"
     "extsprintf" "^1.2.0"
 
-"video.js@^6 || ^7", "video.js@^7.11.8", "video.js@5.x || 6.x || 7.x":
+"video.js@^6 || ^7", "video.js@^7.11.4", "video.js@^7.11.8", "video.js@5.x || 6.x || 7.x":
   "integrity" "sha512-0Owl7q4Zbm6YHX94P9WVqQ2vnpfeNyOtTNwuTEEoKovZogoqV2McOUmsQGM4Edtg4vGTiP74Fv6HVa1V6FeRfg=="
   "resolved" "https://registry.npmjs.org/video.js/-/video.js-7.12.1.tgz"
   "version" "7.12.1"
@@ -11808,6 +11808,14 @@
     "global" "^4.3.2"
     "video.js" "^6 || ^7"
     "videojs-contrib-quality-levels" "^2.0.9"
+
+"videojs-overlay-buttons@^1.2.9":
+  "integrity" "sha512-R2W8iSeot1ntaxZPC7pRWH6GbVA1CVbqodEslg2ALl+VMXBXQjteYSAKTLFgs7LyUU6KqgBJY55lNpZqQvk3RA=="
+  "resolved" "https://registry.npmjs.org/videojs-overlay-buttons/-/videojs-overlay-buttons-1.2.9.tgz"
+  "version" "1.2.9"
+  dependencies:
+    "global" "^4.4.0"
+    "video.js" "^7.11.4"
 
 "videojs-vtt.js@^0.15.3":
   "integrity" "sha512-5FvVsICuMRx6Hd7H/Y9s9GDeEtYcXQWzGMS+sl4UX3t/zoHp3y+isSfIPRochnTH7h+Bh1ILyC639xy9Z6kPag=="

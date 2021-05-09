@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+
 import videojs from "video.js";
 
-import "video.js/dist/video-js.css";
+import "videojs-overlay-buttons";
 import "videojs-contrib-quality-levels";
 import "videojs-max-quality-selector";
 import "videojs-youtube";
 
+import "videojs-overlay-buttons/dist/videojs-overlay-buttons.css";
+import "video.js/dist/video-js.css";
 import "./video.css";
 
 const Video = React.forwardRef((props, ref) => {
   // const [player, setPlayer] = useState(null);
 
   useEffect(() => {
-    videojs(ref.current, props, () => {
+    const player = videojs(ref.current, props, () => {
       console.log("ready");
     });
+
+    player.touchOverlay(props.overlayOptions);
 
     // setPlayer(currentPlayer);
 

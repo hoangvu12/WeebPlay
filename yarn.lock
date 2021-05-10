@@ -11772,7 +11772,7 @@
     "core-util-is" "1.0.2"
     "extsprintf" "^1.2.0"
 
-"video.js@^6 || ^7", "video.js@^7.11.4", "video.js@^7.11.8", "video.js@5.x || 6.x || 7.x":
+"video.js@^6 || ^7", "video.js@^7.11.4", "video.js@^7.11.8", "video.js@5.x || 6.x || 7.x", "video.js@5.x || 6.x || 7.x || *":
   "integrity" "sha512-0Owl7q4Zbm6YHX94P9WVqQ2vnpfeNyOtTNwuTEEoKovZogoqV2McOUmsQGM4Edtg4vGTiP74Fv6HVa1V6FeRfg=="
   "resolved" "https://registry.npmjs.org/video.js/-/video.js-7.12.1.tgz"
   "version" "7.12.1"
@@ -11799,6 +11799,13 @@
   "integrity" "sha512-g8vHMKK2/JGorSfqAZQUmYYNnXmfec4MLhwtEFS+mMs2IDY398GLysy6BH6K+aS1KMNu/xWZ8Sue/X/mdQPliA=="
   "resolved" "https://registry.npmjs.org/videojs-font/-/videojs-font-3.2.0.tgz"
   "version" "3.2.0"
+
+"videojs-landscape-fullscreen@^11.1.0":
+  "integrity" "sha512-uOZft+FvaF7VmglGTOLMZdrnuCpga5ZMk+ykahE0WVHKI7dibDufD8e/s9TUaRHOP1Xl1B42rQW4H9yByHf0bQ=="
+  "resolved" "https://registry.npmjs.org/videojs-landscape-fullscreen/-/videojs-landscape-fullscreen-11.1.0.tgz"
+  "version" "11.1.0"
+  dependencies:
+    "global" "^4.4.0"
 
 "videojs-max-quality-selector@^0.9.1":
   "integrity" "sha512-geb9qwYf83okh/Xcm6AP4YeHz65EyJ6XqYQADqRNYId9+jc2fvx386NVoUNNaBgjunyiAlc3r+9g2DdFMV46Pw=="

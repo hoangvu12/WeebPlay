@@ -6,6 +6,7 @@ import "videojs-overlay-buttons";
 import "videojs-contrib-quality-levels";
 import "videojs-max-quality-selector";
 import "videojs-youtube";
+import "videojs-landscape-fullscreen";
 
 import "videojs-overlay-buttons/dist/videojs-overlay-buttons.css";
 import "video.js/dist/video-js.css";
@@ -20,6 +21,13 @@ const Video = React.forwardRef((props, ref) => {
     });
 
     player.touchOverlay(props.overlayOptions);
+    player.landscapeFullscreen({
+      fullscreen: {
+        enterOnRotate: true,
+        alwaysInLandscapeMode: true,
+        iOS: true,
+      },
+    });
 
     // setPlayer(currentPlayer);
 

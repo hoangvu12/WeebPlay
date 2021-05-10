@@ -177,7 +177,7 @@ const Watch = () => {
 
   return (
     <div className="w-11/12 mx-auto py-14">
-      <div className="lg:w-4/6 mx-auto mb-5 md:w-5/6">
+      <div className="lg:w-4/6 mx-auto md:w-5/6">
         <Video ref={videoEl} {...options} overlayOptions={overlayOptions} />
       </div>
 
@@ -190,6 +190,7 @@ const Watch = () => {
           leave="transition-opacity duration-200"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
+          className="mt-5"
         >
           <div
             className={classNames(

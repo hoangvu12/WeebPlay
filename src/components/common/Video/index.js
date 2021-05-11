@@ -21,9 +21,9 @@ const Video = React.forwardRef((props, ref) => {
       console.log("ready");
     });
 
-    player.touchOverlay(props.overlayOptions);
+    if (isMobile) {
+      player.touchOverlay(props.overlayOptions);
 
-    isMobile &&
       player.landscapeFullscreen({
         fullscreen: {
           enterOnRotate: true,
@@ -31,6 +31,7 @@ const Video = React.forwardRef((props, ref) => {
           iOS: true,
         },
       });
+    }
 
     // setPlayer(currentPlayer);
 

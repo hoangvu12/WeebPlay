@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { isMobile } from "react-device-detect";
 
 import videojs from "video.js";
 
@@ -21,13 +22,15 @@ const Video = React.forwardRef((props, ref) => {
     });
 
     player.touchOverlay(props.overlayOptions);
-    player.landscapeFullscreen({
-      fullscreen: {
-        enterOnRotate: true,
-        alwaysInLandscapeMode: true,
-        iOS: true,
-      },
-    });
+
+    isMobile &&
+      player.landscapeFullscreen({
+        fullscreen: {
+          enterOnRotate: true,
+          alwaysInLandscapeMode: true,
+          iOS: true,
+        },
+      });
 
     // setPlayer(currentPlayer);
 

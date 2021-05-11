@@ -4,6 +4,7 @@ import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import Linkify from "react-linkify";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import videojs from "video.js";
 import "videojs-max-quality-selector/dist/videojs-max-quality-selector.css";
 
@@ -241,16 +242,34 @@ const Watch = () => {
                   className="text-sm text-white"
                 >
                   <Linkify
-                    componentDecorator={(decoratedHref, decoratedText, key) => (
-                      <a
-                        target="blank"
-                        href={decoratedHref}
-                        key={key}
-                        className="line-clamp-1 text-blue-400"
-                      >
-                        {decoratedText}
-                      </a>
-                    )}
+                    componentDecorator={(decoratedHref, decoratedText, key) => {
+                      if (
+                        decoratedHref.includes(
+                          "https://www.youtube.com/playlist?list="
+                        )
+                      ) {
+                        return (
+                          <Link
+                            to={`/playlist?id=${playlistId}`}
+                            key={key}
+                            className="text-blue-400"
+                          >
+                            Tại đây
+                          </Link>
+                        );
+                      }
+
+                      return (
+                        <a
+                          target="blank"
+                          href={decoratedHref}
+                          key={key}
+                          className="line-clamp-1 text-blue-400"
+                        >
+                          {decoratedText}
+                        </a>
+                      );
+                    }}
                   >
                     {videoInfo.description}
                   </Linkify>

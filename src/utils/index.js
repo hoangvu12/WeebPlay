@@ -4,6 +4,10 @@ export const chunkArray = (arr, size) =>
     : [arr];
 
 export const isEmpty = (data) => {
+  if (typeof data === "undefined" || data === "null") {
+    return true;
+  }
+
   if (Array.isArray(data)) {
     return data.length === 0;
   }

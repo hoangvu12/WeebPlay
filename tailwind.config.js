@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
@@ -8,6 +9,7 @@ module.exports = {
       ...theme("colors"),
       primary: "#111111",
       secondary: "#000000",
+      others: "#1B1B1B",
       button: "#2D2D2D",
       orange: "#FF6400",
     }),

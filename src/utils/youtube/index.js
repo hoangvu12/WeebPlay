@@ -78,6 +78,29 @@ export default class API {
     return Format.videos(data);
   }
 
+  async search(channelId, options = {}) {
+    let params = objMerge(
+      this.params,
+      {
+        channelId,
+        part: "snippet",
+        regionCode: "VN",
+        ...options,
+      },
+      { clean: true }
+    );
+
+    const axiosOpts = {
+      url: `${API_URL_BASE}/search`,
+      method: "get",
+      params,
+    };
+
+    let { data } = await axios(axiosOpts);
+
+    return Format.search(data);
+  }
+
   async latestVideos(channelId, options = {}) {
     const { filter, ...rest } = options;
 

@@ -96,7 +96,7 @@ function HomePage() {
             )}
           </Card.Thumbnail>
           <Card.Description className="group min-h-14">
-            <p className="text-white font-roboto group-hover:text-orange line-clamp-2 break-all transition-all duration-300">
+            <p className="text-white font-roboto group-hover:text-orange line-clamp-2 break-word transition-all duration-300">
               {anime.title}
             </p>
           </Card.Description>
